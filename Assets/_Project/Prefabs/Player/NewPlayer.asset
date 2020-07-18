@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534b84e0c2b851447a17f904ac7c8ec7, type: 3}
+  m_Name: NewPlayer
+  m_EditorClassIdentifier: 
+  Position:
+    x: 0
+    y: 0
+    z: 0
+  Speed: 5
+  Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  Material: {fileID: 2100000, guid: 9f3c728f0ec398746b92302faafe70a5, type: 2}
+  Power1: {fileID: 11400000, guid: ffb855ed77d57fe48ad141e839894e1d, type: 2}
