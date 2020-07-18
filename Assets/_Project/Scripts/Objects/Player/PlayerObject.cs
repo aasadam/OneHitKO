@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Objects.Powers;
+﻿using Assets._Project.Scripts.Objects.Skills.Direction;
+using Assets.Scripts.Objects.Skills;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -9,5 +10,6 @@ public class PlayerObject : ScriptableObject
     public float Speed;
     public Mesh Mesh;
     public Material Material;
-    public PowerBase Power1;
+    public DirectionSkillObjectBase Skill1;
+    public DirectionSkillObjectBase Skill3;
 }

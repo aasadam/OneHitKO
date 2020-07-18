@@ -1,12 +1,8 @@
 ﻿using Assets.Scripts.Datas;
-using Assets.Scripts.Statics;
-using Assets.Scripts.Systems;
-using System.Numerics;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 
-[UpdateAfter(typeof(InputSystem))]
 public class MoveSystem : SystemBase
 {
     protected override void OnUpdate()

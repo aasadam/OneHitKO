@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Configs/InputMaster.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/_Project/Configs/InputMaster.inputactions'
 
 using System;
 using System.Collections;
@@ -43,9 +43,17 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""PointerPress"",
+                    ""name"": ""Skill1"",
                     ""type"": ""Button"",
                     ""id"": ""8aa1eea4-3e2d-48aa-9787-057d13a97dfa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Skill3"",
+                    ""type"": ""Button"",
+                    ""id"": ""74bab896-265b-45e9-b3e1-01745170f666"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -131,23 +139,23 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""9c7504e8-583b-4a78-a023-1714220208a6"",
-                    ""path"": ""<Pointer>/press"",
-                    ""interactions"": """",
+                    ""id"": ""c0cdf0fb-113c-420b-9088-86d39b6399d0"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": ""Touch"",
-                    ""action"": ""PointerPress"",
+                    ""groups"": ""BoardMouse"",
+                    ""action"": ""Skill1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""c0cdf0fb-113c-420b-9088-86d39b6399d0"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
+                    ""id"": ""01969243-3352-41b1-a9b3-b4bf4e6904db"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": ""BoardMouse"",
-                    ""action"": ""PointerPress"",
+                    ""action"": ""Skill3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -189,7 +197,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_SelfHability = m_Player.FindAction("SelfHability", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_PointerPosition = m_Player.FindAction("PointerPosition", throwIfNotFound: true);
-        m_Player_PointerPress = m_Player.FindAction("PointerPress", throwIfNotFound: true);
+        m_Player_Skill1 = m_Player.FindAction("Skill1", throwIfNotFound: true);
+        m_Player_Skill3 = m_Player.FindAction("Skill3", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -242,7 +251,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_SelfHability;
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_PointerPosition;
-    private readonly InputAction m_Player_PointerPress;
+    private readonly InputAction m_Player_Skill1;
+    private readonly InputAction m_Player_Skill3;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -250,7 +260,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @SelfHability => m_Wrapper.m_Player_SelfHability;
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @PointerPosition => m_Wrapper.m_Player_PointerPosition;
-        public InputAction @PointerPress => m_Wrapper.m_Player_PointerPress;
+        public InputAction @Skill1 => m_Wrapper.m_Player_Skill1;
+        public InputAction @Skill3 => m_Wrapper.m_Player_Skill3;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -269,9 +280,12 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @PointerPosition.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPointerPosition;
                 @PointerPosition.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPointerPosition;
                 @PointerPosition.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPointerPosition;
-                @PointerPress.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPointerPress;
-                @PointerPress.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPointerPress;
-                @PointerPress.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPointerPress;
+                @Skill1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill1;
+                @Skill1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill1;
+                @Skill1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill1;
+                @Skill3.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill3;
+                @Skill3.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill3;
+                @Skill3.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill3;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -285,9 +299,12 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @PointerPosition.started += instance.OnPointerPosition;
                 @PointerPosition.performed += instance.OnPointerPosition;
                 @PointerPosition.canceled += instance.OnPointerPosition;
-                @PointerPress.started += instance.OnPointerPress;
-                @PointerPress.performed += instance.OnPointerPress;
-                @PointerPress.canceled += instance.OnPointerPress;
+                @Skill1.started += instance.OnSkill1;
+                @Skill1.performed += instance.OnSkill1;
+                @Skill1.canceled += instance.OnSkill1;
+                @Skill3.started += instance.OnSkill3;
+                @Skill3.performed += instance.OnSkill3;
+                @Skill3.canceled += instance.OnSkill3;
             }
         }
     }
@@ -315,6 +332,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnSelfHability(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
         void OnPointerPosition(InputAction.CallbackContext context);
-        void OnPointerPress(InputAction.CallbackContext context);
+        void OnSkill1(InputAction.CallbackContext context);
+        void OnSkill3(InputAction.CallbackContext context);
     }
 }

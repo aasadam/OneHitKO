@@ -30,9 +30,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "PointerPress",
+                    "name": "Skill1",
                     "type": "Button",
                     "id": "8aa1eea4-3e2d-48aa-9787-057d13a97dfa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Skill3",
+                    "type": "Button",
+                    "id": "74bab896-265b-45e9-b3e1-01745170f666",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -118,23 +126,23 @@
                 },
                 {
                     "name": "",
-                    "id": "9c7504e8-583b-4a78-a023-1714220208a6",
-                    "path": "<Pointer>/press",
-                    "interactions": "",
+                    "id": "c0cdf0fb-113c-420b-9088-86d39b6399d0",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press",
                     "processors": "",
-                    "groups": "Touch",
-                    "action": "PointerPress",
+                    "groups": "BoardMouse",
+                    "action": "Skill1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "c0cdf0fb-113c-420b-9088-86d39b6399d0",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
+                    "id": "01969243-3352-41b1-a9b3-b4bf4e6904db",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "BoardMouse",
-                    "action": "PointerPress",
+                    "action": "Skill3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
