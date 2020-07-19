@@ -19,6 +19,7 @@ namespace Assets._Project.Scripts.Entities.Player
 
         public DirectionSkillExecuter.Execute Executer { get; private set; }
         public Entity Entity { get; private set; }
+        public Entity Parent { get; private set; }
 
         public Entity CreateEntity(EntityManager manager, Entity? parent = null)
         {
@@ -32,6 +33,7 @@ namespace Assets._Project.Scripts.Entities.Player
             manager.AddComponentData<LocalToParent>(skill, new LocalToParent());
 
             Entity = skill;
+            Parent = parent??skill;
 
             return skill;
         }

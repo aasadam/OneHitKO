@@ -12,14 +12,22 @@ namespace Assets._Project.Scripts.Executers.Skills
 {
     public static class DirectionSkillExecuter
     {
-        public delegate void Execute(EntityManager manager, Entity skillEntity, float3 worldPoint);
+        public delegate void Execute(EntityManager manager, PlayerDirectionSkill skill, float3 worldPoint);
 
-        public static void ExecuteSingleShot(EntityManager manager, Entity skillEntity, float3 worldPoint)
+        public static void ExecuteSingleShot(EntityManager manager, PlayerDirectionSkill skill, float3 worldPoint)
         {
-            var component = manager.GetComponentData<SingleShotData>(skillEntity);
+            var component = manager.GetComponentData<SingleShotData>(skill.Entity);
             component.Execute = true;
             component.WorldPoint = worldPoint;
-            manager.SetComponentData(skillEntity, component);
+            manager.SetComponentData(skill.Entity, component);
+        }
+
+        public static void ExecuteBlink(EntityManager manager, PlayerDirectionSkill skill, float3 worldPoint)
+        {
+            var component = manager.GetComponentData<BlinkData>(skill.Entity);
+            component.Execute = true;
+            component.WorldPoint = worldPoint;
+            manager.SetComponentData(skill.Entity, component);
         }
     }
 }

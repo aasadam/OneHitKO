@@ -42,7 +42,7 @@ namespace Assets._Project.Scripts.Controllers
             //Debug.Log($"Mouse pos : {_pointerPosition} === WorldPos: {Camera.main.ScreenToWorldPoint(new Vector3(_pointerPosition.x, _pointerPosition.y, Camera.main.transform.position.y))}");
 
             //TODO: Handle Camera reference
-            Player.Skill1.Executer(_entityManager, Player.Skill1.Entity, Camera.main.ScreenToWorldPoint(new Vector3(_pointerPosition.x, _pointerPosition.y, Camera.main.transform.position.y)));
+            Player.Skill1.Executer(_entityManager, Player.Skill1, Camera.main.ScreenToWorldPoint(new Vector3(_pointerPosition.x, _pointerPosition.y, Camera.main.transform.position.y)));
             
         }
 
@@ -51,7 +51,7 @@ namespace Assets._Project.Scripts.Controllers
             //Debug.Log($"Mouse pos : {_pointerPosition} === WorldPos: {Camera.main.ScreenToWorldPoint(new Vector3(_pointerPosition.x, _pointerPosition.y, Camera.main.transform.position.y))}");
 
             //TODO: Handle Camera reference
-            Player.Skill3.Executer(_entityManager, Player.Skill3.Entity, Camera.main.ScreenToWorldPoint(new Vector3(_pointerPosition.x, _pointerPosition.y, Camera.main.transform.position.y)));
+            Player.Skill3.Executer(_entityManager, Player.Skill3, Camera.main.ScreenToWorldPoint(new Vector3(_pointerPosition.x, _pointerPosition.y, Camera.main.transform.position.y)));
         }
 
     }
