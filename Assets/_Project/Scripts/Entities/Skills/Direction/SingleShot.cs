@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Entidades;
+﻿using Assets._Project.Scripts.Datas.Destruction;
+using Assets.Scripts.Entidades;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Rendering;
@@ -11,9 +12,9 @@ namespace Assets._Project.Scripts.Entities.Skills.Direction
     {
         private readonly MoveSpeedData _moveData;
         private readonly RenderMesh _renderMesh;
-        private float3 _startPosition;
+        private readonly float _maxDistance;
 
-        public SingleShot(float speed, Mesh mesh, Material material)
+        public SingleShot(float speed, Mesh mesh, Material material, float maxDistance)
         {
             _moveData = new MoveSpeedData
             {
@@ -26,13 +27,9 @@ namespace Assets._Project.Scripts.Entities.Skills.Direction
                 material = material
             };
 
-            _startPosition = default;
+            _maxDistance = maxDistance;
         }
 
-        public void SetStartPosition(float3 position)
-        {
-            _startPosition = position;
-        }
 
         public Entity CreateEntity(EntityManager manager, Entity? parent = null)
         {
@@ -45,9 +42,9 @@ namespace Assets._Project.Scripts.Entities.Skills.Direction
                                                             typeof(RenderBounds),
                                                             typeof(LocalToWorld)
                                               });
-            manager.AddComponentData(entity, new Translation() { Value = _startPosition });
             manager.AddComponentData(entity, _moveData);
             manager.AddSharedComponentData(entity, _renderMesh);
+            manager.AddComponentData<DestroyByDistanceFromPointData>(entity, new DestroyByDistanceFromPointData() { Distance = _maxDistance } );
             manager.AddComponent<Disabled>(entity);
 
             return entity;

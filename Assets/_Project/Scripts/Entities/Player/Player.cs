@@ -6,6 +6,7 @@ using Assets.Scripts.Datas;
 using Assets.Scripts.Entidades;
 using System;
 using Unity.Entities;
+using Unity.Mathematics;
 using Unity.Rendering;
 using Unity.Transforms;
 
@@ -14,10 +15,12 @@ namespace Assets._Project.Scripts.Entities.Player
     public class Player : IEntity
     {
         private readonly PlayerObject _playerObject;
+        private readonly float3 _startPosition;
 
-        public Player(PlayerObject playerObject)
+        public Player(PlayerObject playerObject, float3 startPosition)
         {
             this._playerObject = playerObject;
+            this._startPosition = startPosition;
         }
 
         public Entity PlayerEntity { get; private set; }
@@ -36,8 +39,8 @@ namespace Assets._Project.Scripts.Entities.Player
                                                             typeof(LocalToWorld),
                                                             typeof(MoveDirectionData)
                                               });
-            manager.AddComponentData(player, new Translation() { Value = _playerObject.Position });
             manager.AddComponentData(player, new MoveSpeedData(_playerObject.Speed));
+            manager.AddComponentData(player, new Translation() { Value = _startPosition });
             manager.AddSharedComponentData(player, new RenderMesh()
             {
                 material = _playerObject.Material,

@@ -16,12 +16,13 @@ namespace Assets.Scripts.Objects.Skills.Direction
         public float Speed;
         public Mesh Mesh;
         public Material Material;
+        public float MaxDistance;
 
         public override PlayerDirectionSkill AddDirectionSkill(EntityManager manager, Entity entity)
         {
             var component = new SingleShotData()
             {
-                SingleShot = (new SingleShot(Speed, Mesh, Material)).CreateEntity(manager)
+                SingleShot = (new SingleShot(Speed, Mesh, Material, MaxDistance)).CreateEntity(manager)
             };
 
             var skill = new PlayerDirectionSkill(DirectionSkillExecuter.ExecuteSingleShot);

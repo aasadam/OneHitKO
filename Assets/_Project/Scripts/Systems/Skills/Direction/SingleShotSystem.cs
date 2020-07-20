@@ -1,4 +1,6 @@
-﻿using Assets._Project.Scripts.Datas.Skills.Direction;
+﻿using Assets._Project.Scripts.Datas.Destruction;
+using Assets._Project.Scripts.Datas.Position;
+using Assets._Project.Scripts.Datas.Skills.Direction;
 using Assets.Scripts.Datas;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -20,7 +22,7 @@ namespace Assets._Project.Scripts.Systems.Skills
         {
             //TODO: Understand diference between ToConcurrent() and without it
             var buffer = _entityCommandBufferSystem.CreateCommandBuffer().ToConcurrent();
-            Entities.ForEach((Entity entity, int entityInQueryIndex,ref SingleShotData singleShot, in LocalToWorld pos) =>
+            Entities.ForEach((Entity entity, int entityInQueryIndex, ref SingleShotData singleShot, in LocalToWorld pos) =>
             {
                 if (singleShot.Execute)
                 {
@@ -28,6 +30,7 @@ namespace Assets._Project.Scripts.Systems.Skills
                     var instance = buffer.Instantiate(entityInQueryIndex, singleShot.SingleShot);
                     buffer.AddComponent<MoveDirectionData>(entityInQueryIndex, instance, new MoveDirectionData(math.normalize((new float3(singleShot.WorldPoint.x, pos.Position.y, singleShot.WorldPoint.z) - pos.Position))));
                     buffer.AddComponent<Translation>(entityInQueryIndex, instance, new Translation() { Value = pos.Position });
+                    buffer.AddComponent<SpawnPositionData>(entityInQueryIndex, instance, new SpawnPositionData() { WorldPosition = pos.Position });
                     buffer.RemoveComponent<Disabled>(entityInQueryIndex, instance);
                     singleShot.Execute = false;
                 }

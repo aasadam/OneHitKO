@@ -6,7 +6,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewPlayer", menuName = "Player")]
 public class PlayerObject : ScriptableObject
 {
-    public float3 Position;
     public float Speed;
     public Mesh Mesh;
     public Material Material;

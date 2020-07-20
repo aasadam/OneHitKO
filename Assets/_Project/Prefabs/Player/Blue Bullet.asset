@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6d1dc809391ffe448f84a60542afde6, type: 3}
   m_Name: Blue Bullet
   m_EditorClassIdentifier: 
-  Speed: 0
-  Mesh: {fileID: 0}
-  Material: {fileID: 0}
+  Speed: 15
+  Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  Material: {fileID: 2100000, guid: b1373f7c942e24e4a8092412c37b66d8, type: 2}
+  MaxDistance: 2
