@@ -27,9 +27,9 @@ namespace Assets._Project.Scripts.Entities.Player
         public PlayerDirectionSkill Skill1 { get; private set; }
         public PlayerDirectionSkill Skill3 { get; private set; }
 
-        public Entity CreateEntity(EntityManager manager, Entity? parent = null)
+        public Entity CreateEntity(EntityManager manager, Entity? parent = null, Entity? root = null)
         {
-            var player = manager.CreateEntity(new ComponentType[]
+             PlayerEntity = manager.CreateEntity(new ComponentType[]
                                               {
                                                             typeof(MoveSpeedData),
                                                             typeof(Translation),
@@ -39,19 +39,20 @@ namespace Assets._Project.Scripts.Entities.Player
                                                             typeof(LocalToWorld),
                                                             typeof(MoveDirectionData)
                                               });
-            manager.AddComponentData(player, new MoveSpeedData(_playerObject.Speed));
-            manager.AddComponentData(player, new Translation() { Value = _startPosition });
-            manager.AddSharedComponentData(player, new RenderMesh()
+            manager.AddComponentData(PlayerEntity, new MoveSpeedData(_playerObject.Speed));
+            manager.AddComponentData(PlayerEntity, new Translation() { Value = _startPosition });
+            manager.AddSharedComponentData(PlayerEntity, new RenderMesh()
             {
                 material = _playerObject.Material,
                 mesh = _playerObject.Mesh
             });
 
-            Skill1 = _playerObject.Skill1.AddDirectionSkill(manager, player);
-            Skill3 = _playerObject.Skill3.AddDirectionSkill(manager, player);
+            Skill1 = _playerObject.Skill1.PlayerDirectionSkill;
+            Skill3 = _playerObject.Skill3.PlayerDirectionSkill;
 
-            PlayerEntity = player;
-            return player;
+            Skill1.CreateEntity(manager, PlayerEntity, PlayerEntity);
+            Skill3.CreateEntity(manager, PlayerEntity, PlayerEntity);
+            return PlayerEntity;
         }
     }
 }

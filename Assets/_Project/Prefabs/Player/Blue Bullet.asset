@@ -15,4 +15,4 @@ MonoBehaviour:
   Speed: 15
   Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
   Material: {fileID: 2100000, guid: b1373f7c942e24e4a8092412c37b66d8, type: 2}
-  MaxDistance: 2
+  MaxDistance: 20

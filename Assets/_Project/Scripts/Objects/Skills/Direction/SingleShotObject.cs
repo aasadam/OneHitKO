@@ -18,20 +18,6 @@ namespace Assets.Scripts.Objects.Skills.Direction
         public Material Material;
         public float MaxDistance;
 
-        public override PlayerDirectionSkill AddDirectionSkill(EntityManager manager, Entity entity)
-        {
-            var component = new SingleShotData()
-            {
-                SingleShot = (new SingleShot(Speed, Mesh, Material, MaxDistance)).CreateEntity(manager)
-            };
-
-            var skill = new PlayerDirectionSkill(DirectionSkillExecuter.ExecuteSingleShot);
-
-            skill.CreateEntity(manager, entity);
-
-            manager.AddComponentData(skill.Entity, component);
-
-            return skill;
-        }
+        public override PlayerDirectionSkill PlayerDirectionSkill => new PlayerDirectionSkill(DirectionSkillExecuter.ExecuteSingleShot, new SingleShot(Speed, Mesh, Material, MaxDistance));
     }
 }

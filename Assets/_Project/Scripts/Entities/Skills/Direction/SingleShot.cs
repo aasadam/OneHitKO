@@ -1,4 +1,5 @@
 ﻿using Assets._Project.Scripts.Datas.Destruction;
+using Assets._Project.Scripts.Datas.Skills.Direction;
 using Assets.Scripts.Entidades;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -31,7 +32,7 @@ namespace Assets._Project.Scripts.Entities.Skills.Direction
         }
 
 
-        public Entity CreateEntity(EntityManager manager, Entity? parent = null)
+        public Entity CreateEntity(EntityManager manager, Entity? parent = null, Entity? root = null)
         {
             var entity = manager.CreateEntity(new ComponentType[]
                                               {
@@ -46,6 +47,14 @@ namespace Assets._Project.Scripts.Entities.Skills.Direction
             manager.AddSharedComponentData(entity, _renderMesh);
             manager.AddComponentData<DestroyByDistanceFromPointData>(entity, new DestroyByDistanceFromPointData() { Distance = _maxDistance } );
             manager.AddComponent<Disabled>(entity);
+
+            if(parent.HasValue)
+            {
+                manager.AddComponentData(parent.Value, new SingleShotData()
+                {
+                    SingleShot = entity
+                });
+            }
 
             return entity;
         }

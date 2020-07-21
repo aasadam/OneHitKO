@@ -12,12 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 534b84e0c2b851447a17f904ac7c8ec7, type: 3}
   m_Name: Player 1
   m_EditorClassIdentifier: 
-  Position:
-    x: 0
-    y: 0
-    z: 0
   Speed: 5
   Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
   Material: {fileID: 2100000, guid: 9f3c728f0ec398746b92302faafe70a5, type: 2}
   Skill1: {fileID: 11400000, guid: e0558ecae068b604f873244a85f70bc4, type: 2}
-  Skill3: {fileID: 11400000, guid: 31ebec558dad9fe4ba8c3b07ce5d4960, type: 2}
+  Skill3: {fileID: 11400000, guid: bcdcc9668904a7948899d83afb36be0d, type: 2}

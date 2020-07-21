@@ -9,6 +9,6 @@ namespace Assets.Scripts.Entidades
 {
     public interface IEntity
     {
-        Entity CreateEntity(EntityManager manager, Entity? parent = null);
+        Entity CreateEntity(EntityManager manager, Entity? parent = null, Entity? root = null);
     }
 }

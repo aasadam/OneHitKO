@@ -14,6 +14,6 @@ namespace Assets._Project.Scripts.Objects.Skills.Direction
 {
     public abstract class DirectionSkillObjectBase : ScriptableObject
     {
-        public abstract PlayerDirectionSkill AddDirectionSkill(EntityManager manager, Entity entity);
+        public abstract PlayerDirectionSkill PlayerDirectionSkill { get; }
     }
 }
