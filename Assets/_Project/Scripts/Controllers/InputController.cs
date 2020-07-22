@@ -1,4 +1,5 @@
-﻿using Assets._Project.Scripts.Entities.Player;
+﻿using Assets._Project.Scripts.Datas.Skills.Direction;
+using Assets._Project.Scripts.Entities.Player;
 using Assets.Scripts.Datas;
 using Assets.Scripts.Statics;
 using Unity.Entities;
@@ -42,7 +43,7 @@ namespace Assets._Project.Scripts.Controllers
             //Debug.Log($"Mouse pos : {_pointerPosition} === WorldPos: {Camera.main.ScreenToWorldPoint(new Vector3(_pointerPosition.x, _pointerPosition.y, Camera.main.transform.position.y))}");
 
             //TODO: Handle Camera reference
-            Player.Skill1.Executer(_entityManager, Player.Skill1, Camera.main.ScreenToWorldPoint(new Vector3(_pointerPosition.x, _pointerPosition.y, Camera.main.transform.position.y)));
+            ExecuteDirectionSkill(_entityManager, Player.Skill1, Camera.main.ScreenToWorldPoint(new Vector3(_pointerPosition.x, _pointerPosition.y, Camera.main.transform.position.y)));
             
         }
 
@@ -51,7 +52,15 @@ namespace Assets._Project.Scripts.Controllers
             //Debug.Log($"Mouse pos : {_pointerPosition} === WorldPos: {Camera.main.ScreenToWorldPoint(new Vector3(_pointerPosition.x, _pointerPosition.y, Camera.main.transform.position.y))}");
 
             //TODO: Handle Camera reference
-            Player.Skill3.Executer(_entityManager, Player.Skill3, Camera.main.ScreenToWorldPoint(new Vector3(_pointerPosition.x, _pointerPosition.y, Camera.main.transform.position.y)));
+            ExecuteDirectionSkill(_entityManager, Player.Skill3, Camera.main.ScreenToWorldPoint(new Vector3(_pointerPosition.x, _pointerPosition.y, Camera.main.transform.position.y)));
+        }
+
+        private static void ExecuteDirectionSkill(EntityManager manager, PlayerDirectionSkill skill, float3 worldPoint)
+        {
+            var component = manager.GetComponentData<DirectionSkillExecutionData>(skill.Entity);
+            component.ScheduleExecution = true;
+            component.WorldPoint = worldPoint;
+            manager.SetComponentData(skill.Entity, component);
         }
 
     }

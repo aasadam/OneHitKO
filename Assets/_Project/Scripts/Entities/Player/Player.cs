@@ -1,10 +1,5 @@
-﻿using Assets._Project.Scripts.Datas.Skills;
-using Assets._Project.Scripts.Datas.Skills.Direction;
-using Assets._Project.Scripts.Entities.Player;
-using Assets._Project.Scripts.Executers.Skills;
-using Assets.Scripts.Datas;
+﻿using Assets.Scripts.Datas;
 using Assets.Scripts.Entidades;
-using System;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Rendering;

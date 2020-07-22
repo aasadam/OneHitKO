@@ -1,10 +1,5 @@
-﻿using Assets._Project.Scripts.Executers.Skills;
+﻿using Assets._Project.Scripts.Datas.Skills.Direction;
 using Assets.Scripts.Entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Unity.Entities;
 using Unity.Transforms;
 
@@ -14,13 +9,11 @@ namespace Assets._Project.Scripts.Entities.Player
     {
         private readonly IEntity _skill;
 
-        public PlayerDirectionSkill(DirectionSkillExecuter.Execute executer, IEntity skill)
+        public PlayerDirectionSkill(IEntity skill)
         {
-            Executer = executer;
             this._skill = skill;
         }
 
-        public DirectionSkillExecuter.Execute Executer { get; private set; }
         public Entity Entity { get; private set; }
         public Entity Parent { get; private set; }
 
@@ -29,7 +22,8 @@ namespace Assets._Project.Scripts.Entities.Player
             var skill = manager.CreateEntity(new ComponentType[]
                                               {
                                                             typeof(Translation),
-                                                            typeof(LocalToWorld)
+                                                            typeof(LocalToWorld),
+                                                            typeof(DirectionSkillExecutionData)
                                               });
 
             manager.AddComponentData<Parent>(skill, new Parent() { Value = parent.Value });

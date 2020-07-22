@@ -23,12 +23,12 @@ namespace Assets._Project.Scripts.Systems.Skills.Direction
         {
             //TODO: Understand diference between ToConcurrent() and without it
             var buffer = _entityCommandBufferSystem.CreateCommandBuffer().ToConcurrent();
-            Entities.ForEach((Entity entity, int entityInQueryIndex, ref BlinkData blinkData) =>
+            Entities.ForEach((Entity entity, int entityInQueryIndex, ref DirectionSkillExecutionData executionData, ref BlinkData blinkData) =>
             {
-                if (blinkData.Execute)
+                if (executionData.ExecuteSkill)
                 {
-                    buffer.AddComponent<Translation>(entityInQueryIndex, blinkData.ParentContainer, new Translation() { Value = blinkData.WorldPoint });
-                    blinkData.Execute = false;
+                    buffer.AddComponent<Translation>(entityInQueryIndex, blinkData.ParentContainer, new Translation() { Value = executionData.WorldPoint });
+                    executionData.ExecuteSkill = false;
                 }
             }).Schedule();
 

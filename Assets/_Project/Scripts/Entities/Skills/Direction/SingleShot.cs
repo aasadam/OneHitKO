@@ -14,8 +14,9 @@ namespace Assets._Project.Scripts.Entities.Skills.Direction
         private readonly MoveSpeedData _moveData;
         private readonly RenderMesh _renderMesh;
         private readonly float _maxDistance;
+        private readonly float _cooldown;
 
-        public SingleShot(float speed, Mesh mesh, Material material, float maxDistance)
+        public SingleShot(float speed, Mesh mesh, Material material, float maxDistance, float cooldown)
         {
             _moveData = new MoveSpeedData
             {
@@ -29,6 +30,7 @@ namespace Assets._Project.Scripts.Entities.Skills.Direction
             };
 
             _maxDistance = maxDistance;
+            _cooldown = cooldown;
         }
 
 
@@ -53,6 +55,11 @@ namespace Assets._Project.Scripts.Entities.Skills.Direction
                 manager.AddComponentData(parent.Value, new SingleShotData()
                 {
                     SingleShot = entity
+                });
+
+                manager.AddComponentData(parent.Value, new DirectionSkillData()
+                {
+                    Cooldown = _cooldown
                 });
             }
 
