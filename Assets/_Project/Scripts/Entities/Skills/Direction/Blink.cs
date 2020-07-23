@@ -12,10 +12,12 @@ namespace Assets._Project.Scripts.Entities.Skills.Direction
     public struct Blink : IEntity
     {
         private readonly float _cooldown;
+        private readonly float _castPoint;
 
-        public Blink(float cooldown)
+        public Blink(float cooldown, float castPoint)
         {
             this._cooldown = cooldown;
+            _castPoint = castPoint;
         }
 
         public Entity CreateEntity(EntityManager manager, Entity? parent = null, Entity? root = null)
@@ -29,7 +31,8 @@ namespace Assets._Project.Scripts.Entities.Skills.Direction
 
                 manager.AddComponentData(parent.Value, new DirectionSkillData()
                 {
-                    Cooldown = _cooldown
+                    Cooldown = _cooldown,
+                    CastPoint = _castPoint
                 });
             }
 

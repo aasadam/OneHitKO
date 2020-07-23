@@ -13,5 +13,7 @@ namespace Assets._Project.Scripts.Datas.Skills.Direction
     {
         public float Cooldown;
         public double TimeLastExecuted;
+        public double TimeLastCasted;
+        public float CastPoint;
     }
 }

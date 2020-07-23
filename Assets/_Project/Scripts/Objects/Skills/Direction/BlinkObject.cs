@@ -8,7 +8,8 @@ namespace Assets._Project.Scripts.Objects.Skills.Direction
     public class BlinkObject : DirectionSkillObjectBase
     {
         public float Cooldown;
+        public float CastPoint;
 
-        public override PlayerDirectionSkill PlayerDirectionSkill => new PlayerDirectionSkill(new Blink(Cooldown));
+        public override PlayerDirectionSkill PlayerDirectionSkill => new PlayerDirectionSkill(new Blink(Cooldown, CastPoint));
     }
 }

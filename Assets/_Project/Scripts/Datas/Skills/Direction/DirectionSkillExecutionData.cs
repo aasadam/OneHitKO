@@ -13,6 +13,7 @@ namespace Assets._Project.Scripts.Datas.Skills.Direction
     {
         public float3 WorldPoint;
         public bool ScheduleExecution;
+        public bool ScheduleCast;
         public bool ExecuteSkill;
     }
 }

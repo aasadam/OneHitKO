@@ -13,7 +13,8 @@ namespace Assets.Scripts.Objects.Skills.Direction
         public Material Material;
         public float MaxDistance;
         public float CoolDown;
+        public float CastPoint;
 
-        public override PlayerDirectionSkill PlayerDirectionSkill => new PlayerDirectionSkill(new SingleShot(Speed, Mesh, Material, MaxDistance, CoolDown));
+        public override PlayerDirectionSkill PlayerDirectionSkill => new PlayerDirectionSkill(new SingleShot(Speed, Mesh, Material, MaxDistance, CoolDown, CastPoint));
     }
 }

@@ -15,14 +15,21 @@ namespace Assets._Project.Scripts.Systems.Skills.Direction
             var time = Time.ElapsedTime;
             Entities.ForEach((ref DirectionSkillData directionSkill, ref DirectionSkillExecutionData executionData) =>
             {
+
+                if (executionData.ScheduleCast && directionSkill.TimeLastCasted + directionSkill.CastPoint < time)
+                {
+                    directionSkill.TimeLastExecuted = time;
+                    executionData.ScheduleCast = false;
+                    executionData.ExecuteSkill = true;
+                    return;
+                }
+                    
                 if (executionData.ScheduleExecution)
                 {
-                    executionData.ExecuteSkill = false;
-
                     if (directionSkill.TimeLastExecuted + directionSkill.Cooldown < time)
                     {
-                        executionData.ExecuteSkill = true;
-                        directionSkill.TimeLastExecuted = time;
+                        executionData.ScheduleCast = true;
+                        directionSkill.TimeLastCasted = time;
                     }
 
                     executionData.ScheduleExecution = false;
