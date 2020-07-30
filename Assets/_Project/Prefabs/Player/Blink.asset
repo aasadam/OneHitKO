@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Blink
   m_EditorClassIdentifier: 
   Cooldown: 5
+  CastPoint: 0.2
+  MaxDistance: 10

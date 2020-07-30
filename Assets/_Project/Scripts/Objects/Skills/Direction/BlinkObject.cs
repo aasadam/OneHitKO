@@ -9,7 +9,8 @@ namespace Assets._Project.Scripts.Objects.Skills.Direction
     {
         public float Cooldown;
         public float CastPoint;
+        public float MaxDistance;
 
-        public override PlayerDirectionSkill PlayerDirectionSkill => new PlayerDirectionSkill(new Blink(Cooldown, CastPoint));
+        public override PlayerDirectionSkill PlayerDirectionSkill => new PlayerDirectionSkill(new Blink(Cooldown, CastPoint, MaxDistance));
     }
 }

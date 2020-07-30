@@ -13,11 +13,13 @@ namespace Assets._Project.Scripts.Entities.Skills.Direction
     {
         private readonly float _cooldown;
         private readonly float _castPoint;
+        private readonly float _maxdistance;
 
-        public Blink(float cooldown, float castPoint)
+        public Blink(float cooldown, float castPoint, float maxdistance)
         {
             this._cooldown = cooldown;
             _castPoint = castPoint;
+            _maxdistance = maxdistance;
         }
 
         public Entity CreateEntity(EntityManager manager, Entity? parent = null, Entity? root = null)
@@ -26,7 +28,8 @@ namespace Assets._Project.Scripts.Entities.Skills.Direction
             {
                 manager.AddComponentData(parent.Value, new BlinkData()
                 {
-                    ParentContainer = root ?? parent.Value
+                    ParentContainer = root ?? parent.Value,
+                    MaxDistance = _maxdistance
                 });
 
                 manager.AddComponentData(parent.Value, new DirectionSkillData()

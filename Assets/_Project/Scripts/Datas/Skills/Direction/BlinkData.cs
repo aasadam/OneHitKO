@@ -7,5 +7,6 @@ namespace Assets._Project.Scripts.Datas.Skills.Direction
     public struct BlinkData : IComponentData
     {
         public Entity ParentContainer;
+        public float MaxDistance;
     }
 }
